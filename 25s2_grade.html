@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>八年级第一次段考成绩分析</title>
+    <link href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" onerror="alert('Failed to load Chart.js. Please check your internet connection.')"></script>
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --secondary-color: #10B981;
+            --accent-color: #F59E0B;
+            --text-color: #1F2937;
+            --background-color: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --border-color: #E5E7EB;
+            --highlight-bg: #F3F4F6;
+        }
+
+        .dark {
+            --primary-color: #6366F1;
+            --secondary-color: #10B981;
+            --accent-color: #F59E0B;
+            --text-color: #F9FAFB;
+            --background-color: #111827;
+            --card-bg: #1F2937;
+            --border-color: #374151;
+            --highlight-bg: #2D3748;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: var(--highlight-bg);
+        }
+
+        .primary-btn {
+            background-color: var(--primary-color);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        /* 首字下沉效果 */
+        .first-letter-drop:first-letter {
+            float: left;
+            font-size: 3em;
+            line-height: 0.8;
+            padding-right: 8px;
+            color: var(--accent-color);
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* 表格样式 */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .data-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.75rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: var(--highlight-bg);
+        }
+
+        .data-table tbody tr:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+        }
+
+        /* 表格容器支持水平滚动 */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* 进度条样式 */
+        .progress-container {
+            height: 1.5rem;
+            background-color: var(--highlight-bg);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* 标签切换样式 */
+        .tab-button {
+            padding: 0.5rem 1rem;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* 深色模式切换按钮动画 */
+        .theme-switch {
+            position: relative;
+            width: 3rem;
+            height: 1.5rem;
+            background-color: var(--border-color);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-switch::after {
+            content: '';
+            position: absolute;
+            top: 0.15rem;
+            left: 0.15rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .dark .theme-switch {
+            background-color: var(--primary-color);
+        }
+
+        .dark .theme-switch::after {
+            transform: translateX(1.5rem);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- 顶部导航 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 shadow-md" style="background-color: var(--card-bg);">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-chart-bar text-2xl" style="color: var(--primary-color);"></i>
+                <h1 class="text-xl font-bold">八年级第一次段考成绩分析</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="theme-switch" id="themeSwitch"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <header class="pt-24 pb-16 px-4" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+        <div class="container mx-auto text-white">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">班级学业表现分析</h1>
+            <p class="text-xl opacity-90 max-w-2xl">全面展示201班与202班在各学科的平均分、及格率、优秀率和特优率数据，帮助教师和学生更好地了解学业状况，指导教学改进。——Created By LUKAS🐯</p>
+            <div class="mt-8 flex space-x-4">
+                <!-- 删除下载和分享按钮 -->
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- 数据总览卡片 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-chart-line mr-3" style="color: var(--primary-color);"></i>
+                总分对比
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-trophy mr-2" style="color: var(--accent-color);"></i>
+                        总分平均分对比
+                    </h3>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        201班与202班的总分平均分对比，反映整体学业表现
+                    </div>
+                    <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
+                        <canvas id="totalScoreChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-4 border-t" style="border-color: var(--border-color);">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-medium">201班总分平均分</span>
+                            <span class="font-bold">598.5分</span>
+                        </div>
+                        <div class="progress-container mb-4">
+                            <div class="progress-bar" style="width: 74.8%; background-color: #4F46E5;"></div>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-medium">202班总分平均分</span>
+                            <span class="font-bold">640.83分</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 80.1%; background-color: #10B981;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-balance-scale mr-2" style="color: var(--accent-color);"></i>
+                        班级差距分析
+                    </h3>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        202班在总分上高出201班42.33分，具体学科差距如下
+                    </div>
+                    <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
+                        <canvas id="scoreDifferenceChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-4 border-t text-center" style="border-color: var(--border-color);">
+                        <p class="text-sm"><span class="font-semibold">结论：</span>202班在各科目上普遍优于201班，尤其在道法、地理、数学和生物学科上差距显著</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 标签切换部分 -->
+        <section class="mb-16">
+            <div class="flex border-b mb-8" style="border-color: var(--border-color);">
+                <button class="tab-button active" data-tab="averageScore">
+                    <i class="fas fa-chart-column mr-1"></i> 平均分
+                </button>
+                <button class="tab-button" data-tab="passRate">
+                    <i class="fas fa-check-circle mr-1"></i> 及格率
+                </button>
+                <button class="tab-button" data-tab="excellentRate">
+                    <i class="fas fa-star mr-1"></i> 优秀率
+                </button>
+                <button class="tab-button" data-tab="specialRate">
+                    <i class="fas fa-crown mr-1"></i> 特优率
+                </button>
+            </div>
+
+            <!-- 平均分 -->
+            <div id="averageScore" class="tab-content">
+                <div class="card rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4">各学科平均分对比</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">展示201班与202班在各学科的平均得分情况，满分为100分</p>
+                    </div>
+                    <div class="chart-container px-6" style="position: relative; height: 400px; width: 100%;">
+                        <canvas id="averageScoreChart"></canvas>
+                    </div>
+                    <div class="p-6">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>班级</th>
+                                        <th>语文</th>
+                                        <th>数学</th>
+                                        <th>英语</th>
+                                        <th>道法</th>
+                                        <th>历史</th>
+                                        <th>物理</th>
+                                        <th>生物</th>
+                                        <th>地理</th>
+                                        <th>体育</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-medium">201</td>
+                                        <td>85.3</td>
+                                        <td>75.81</td>
+                                        <td>85.62</td>
+                                        <td>59.22</td>
+                                        <td>65.46</td>
+                                        <td>79.14</td>
+                                        <td>69.97</td>
+                                        <td>54.81</td>
+                                        <td>23.17</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">202</td>
+                                        <td>87.13</td>
+                                        <td>84.13</td>
+                                        <td>88.05</td>
+                                        <td>69.31</td>
+                                        <td>69.13</td>
+                                        <td>79.62</td>
+                                        <td>75.67</td>
+                                        <td>62.21</td>
+                                        <td>25.58</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 及格率 -->
+            <div id="passRate" class="tab-content hidden">
+                <div class="card rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4">各学科及格率对比</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">展示201班与202班在各学科的及格率情况，达到60分即为及格</p>
+                    </div>
+                    <div class="chart-container px-6" style="position: relative; height: 400px; width: 100%;">
+                        <canvas id="passRateChart"></canvas>
+                    </div>
+                    <div class="p-6">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>班级</th>
+                                        <th>语文</th>
+                                        <th>数学</th>
+                                        <th>英语</th>
+                                        <th>道法</th>
+                                        <th>历史</th>
+                                        <th>物理</th>
+                                        <th>生物</th>
+                                        <th>地理</th>
+                                        <th>体育</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-medium">201</td>
+                                        <td>89.19%</td>
+                                        <td>64.86%</td>
+                                        <td>78.38%</td>
+                                        <td>45.95%</td>
+                                        <td>78.38%</td>
+                                        <td>91.89%</td>
+                                        <td>81.08%</td>
+                                        <td>48.65%</td>
+                                        <td>81.08%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">202</td>
+                                        <td>94.87%</td>
+                                        <td>74.36%</td>
+                                        <td>76.92%</td>
+                                        <td>79.49%</td>
+                                        <td>74.36%</td>
+                                        <td>92.31%</td>
+                                        <td>87.18%</td>
+                                        <td>58.97%</td>
+                                        <td>89.74%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 优秀率 -->
+            <div id="excellentRate" class="tab-content hidden">
+                <div class="card rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4">各学科优秀率对比</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">展示201班与202班在各学科的优秀率情况，达到80分即为优秀</p>
+                    </div>
+                    <div class="chart-container px-6" style="position: relative; height: 400px; width: 100%;">
+                        <canvas id="excellentRateChart"></canvas>
+                    </div>
+                    <div class="p-6">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>班级</th>
+                                        <th>语文</th>
+                                        <th>数学</th>
+                                        <th>英语</th>
+                                        <th>道法</th>
+                                        <th>历史</th>
+                                        <th>物理</th>
+                                        <th>生物</th>
+                                        <th>地理</th>
+                                        <th>体育</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-medium">201</td>
+                                        <td>27.03%</td>
+                                        <td>27.03%</td>
+                                        <td>40.54%</td>
+                                        <td>13.51%</td>
+                                        <td>8.11%</td>
+                                        <td>56.76%</td>
+                                        <td>32.43%</td>
+                                        <td>0.00%</td>
+                                        <td>59.46%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">202</td>
+                                        <td>25.64%</td>
+                                        <td>41.03%</td>
+                                        <td>46.15%</td>
+                                        <td>25.64%</td>
+                                        <td>30.77%</td>
+                                        <td>51.28%</td>
+                                        <td>48.72%</td>
+                                        <td>7.69%</td>
+                                        <td>76.92%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 特优率 -->
+            <div id="specialRate" class="tab-content hidden">
+                <div class="card rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4">各学科特优率对比</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">展示201班与202班在各学科的特优率情况，达到90分即为特优</p>
+                    </div>
+                    <div class="chart-container px-6" style="position: relative; height: 400px; width: 100%;">
+                        <canvas id="specialRateChart"></canvas>
+                    </div>
+                    <div class="p-6">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>班级</th>
+                                        <th>语文</th>
+                                        <th>数学</th>
+                                        <th>英语</th>
+                                        <th>道法</th>
+                                        <th>历史</th>
+                                        <th>物理</th>
+                                        <th>生物</th>
+                                        <th>地理</th>
+                                        <th>体育</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-medium">201</td>
+                                        <td>0.00%</td>
+                                        <td>5.41%</td>
+                                        <td>13.51%</td>
+                                        <td>0.00%</td>
+                                        <td>0.00%</td>
+                                        <td>21.62%</td>
+                                        <td>2.70%</td>
+                                        <td>0.00%</td>
+                                        <td>51.35%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">202</td>
+                                        <td>0.00%</td>
+                                        <td>25.64%</td>
+                                        <td>7.69%</td>
+                                        <td>5.13%</td>
+                                        <td>2.56%</td>
+                                        <td>25.64%</td>
+                                        <td>7.69%</td>
+                                        <td>0.00%</td>
+                                        <td>56.41%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成绩关系图 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-sitemap mr-3" style="color: var(--primary-color);"></i>
+                学科成绩关系图
+            </h2>
+            <div class="card rounded-xl p-6 shadow-lg">
+                <div class="mb-6">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        下图展示了各学科在不同维度的表现关系，以及两个班级的差异对比。
+                    </p>
+                </div>
+                <div class="mermaid-container" style="overflow: auto; max-width: 100%;">
+                    <div class="mermaid">
+flowchart TB
+    classDef class201 fill:#4F46E5,color:white,stroke:#4F46E5,stroke-width:2px
+    classDef class202 fill:#10B981,color:white,stroke:#10B981,stroke-width:2px
+    classDef highlight fill:#F59E0B,color:white,stroke:#F59E0B,stroke-width:2px
+    
+    Start["班级成绩分析"] --> Class201["201班<br>总分: 598.5"]:::class201
+    Start --> Class202["202班<br>总分: 640.83"]:::class202
+    
+    Class201 --> Chinese1["语文: 85.3<br>及格率: 89.19%<br>优秀率: 27.03%"]
+    Class201 --> Math1["数学: 75.81<br>及格率: 64.86%<br>优秀率: 27.03%"]
+    Class201 --> English1["英语: 85.62<br>及格率: 78.38%<br>优秀率: 40.54%"]
+    Class201 --> Physics1["物理: 79.14<br>及格率: 91.89%<br>优秀率: 56.76%"]
+    Class201 --> Problem1["薄弱学科"]:::highlight
+    
+    Problem1 --> Dao1["道法: 59.22<br>及格率: 45.95%"]
+    Problem1 --> Geo1["地理: 54.81<br>及格率: 48.65%"]
+    
+    Class202 --> Chinese2["语文: 87.13<br>及格率: 94.87%<br>优秀率: 25.64%"]
+    Class202 --> Math2["数学: 84.13<br>及格率: 74.36%<br>优秀率: 41.03%"]
+    Class202 --> English2["英语: 88.05<br>及格率: 76.92%<br>优秀率: 46.15%"]
+    Class202 --> Physics2["物理: 79.62<br>及格率: 92.31%<br>优秀率: 51.28%"]
+    Class202 --> Strength["优势科目"]:::highlight
+    
+    Strength --> Sport["体育: 比201班<br>高17.44%优秀率"]
+    Strength --> Math_adv["数学: 比201班<br>高20.23%特优率"]
+    
+    Chinese1 -.- Chinese2
+    Math1 -.- Math2
+    English1 -.- English2
+    Physics1 -.- Physics2
+    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结论和建议 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-lightbulb mr-3" style="color: var(--accent-color);"></i>
+                分析结论与教学建议
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">201班分析</h3>
+                    <ul class="space-y-3">
+                        <li class="flex">
+                            <i class="fas fa-circle-exclamation text-red-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">薄弱学科明显</p>
+                                <p class="text-sm opacity-80">道法、地理两科平均分低于60分，及格率不足50%，需重点关注</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-circle-check text-green-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">物理和体育表现突出</p>
+                                <p class="text-sm opacity-80">物理优秀率56.76%，体育特优率51.35%，是班级优势学科</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-arrows-left-right text-blue-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">数学两极分化</p>
+                                <p class="text-sm opacity-80">及格率仅64.86%，但优秀率达27.03%，说明存在两极分化现象</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mt-6 pt-4 border-t" style="border-color: var(--border-color);">
+                        <h4 class="font-medium mb-2">建议措施：</h4>
+                        <ol class="list-decimal ml-5 space-y-2 text-sm">
+                            <li>组织道法、地理学科专项辅导，制定针对性的补救方案</li>
+                            <li>利用物理和体育学科的优势，提高学生的学习积极性</li>
+                            <li>数学学科关注学困生，提高及格率</li>
+                            <li>加强历史学科教学，目前优秀率偏低（8.11%）</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">202班分析</h3>
+                    <ul class="space-y-3">
+                        <li class="flex">
+                            <i class="fas fa-trophy text-yellow-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">整体表现优秀</p>
+                                <p class="text-sm opacity-80">总分平均分640.83，各科表现均衡，优于201班</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-star text-purple-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">数学特优突出</p>
+                                <p class="text-sm opacity-80">数学特优率25.64%，远高于201班的5.41%</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-arrow-trend-up text-green-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">道法成绩显著提升</p>
+                                <p class="text-sm opacity-80">道法及格率79.49%，比201班高33.54个百分点</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mt-6 pt-4 border-t" style="border-color: var(--border-color);">
+                        <h4 class="font-medium mb-2">建议措施：</h4>
+                        <ol class="list-decimal ml-5 space-y-2 text-sm">
+                            <li>保持现有的教学质量，进一步提升地理学科的成绩表现</li>
+                            <li>分享数学和道法学科的教学经验，帮助其他班级改进</li>
+                            <li>继续发挥体育学科的优势，提升学生的综合素质</li>
+                            <li>关注语文特优率为0的问题，探索提高学生高分段能力的方法</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="py-8 px-4 border-t" style="border-color: var(--border-color); background-color: var(--card-bg);">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-lg font-bold flex items-center">
+                        <i class="fas fa-chart-bar mr-2" style="color: var(--primary-color);"></i>
+                        班级成绩数据可视化平台(试验版)
+                    </h2>
+                    <p class="text-sm opacity-70 mt-2">专注于帮助教师和管理者更好地理解学生成绩数据(试验版)</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:opacity-80 transition duration-300">
+                        <i class="fab fa-weixin text-2xl"></i>
+                    </a>
+                    <a href="#" class="hover:opacity-80 transition duration-300">
+                        <i class="fab fa-weibo text-2xl"></i>
+                    </a>
+                    <a href="#" class="hover:opacity-80 transition duration-300">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t text-center text-sm opacity-70" style="border-color: var(--border-color);">
+                <p>&copy; 2025 班级成绩数据可视化平台(试验版) | 数据更新时间: 2025-04-01</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 等待页面和Chart.js完全加载
+        window.addEventListener('load', function() {
+            // 检查Chart.js是否正确加载
+            if (typeof Chart === 'undefined') {
+                alert('Chart.js未能正确加载，请检查网络连接');
+                return;
+            }
+
+            // 存储图表实例
+            let charts = {
+                totalScore: null,
+                scoreDifference: null,
+                averageScore: null,
+                passRate: null,
+                excellentRate: null,
+                specialRate: null
+            };
+
+            // 图表渲染函数
+            function renderCharts() {
+                try {
+                    const isDark = document.body.classList.contains('dark');
+                    const textColor = isDark ? '#F9FAFB' : '#1F2937';
+                    const gridColor = isDark ? '#374151' : '#E5E7EB';
+
+                    // 通用图表配置
+                    const commonOptions = {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: textColor,
+                                    font: {
+                                        family: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+                                        size: 12
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: gridColor
+                                },
+                                ticks: {
+                                    color: textColor,
+                                    font: {
+                                        family: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: gridColor
+                                },
+                                ticks: {
+                                    color: textColor,
+                                    font: {
+                                        family: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    // 总分对比图表
+                    const totalScoreCanvas = document.getElementById('totalScoreChart');
+                    if (totalScoreCanvas) {
+                        if (charts.totalScore instanceof Chart) {
+                            charts.totalScore.destroy();
+                        }
+                        charts.totalScore = new Chart(totalScoreCanvas, {
+                            type: 'bar',
+                            data: {
+                                labels: ['201班', '202班'],
+                                datasets: [{
+                                    label: '总分平均分',
+                                    data: [598.5, 640.83],
+                                    backgroundColor: ['#4F46E5', '#10B981'],
+                                    borderColor: ['#4338CA', '#059669'],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                ...commonOptions,
+                                scales: {
+                                    ...commonOptions.scales,
+                                    y: {
+                                        ...commonOptions.scales.y,
+                                        beginAtZero: true,
+                                        max: 800
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    // 分差图表
+                    const scoreDifferenceCanvas = document.getElementById('scoreDifferenceChart');
+                    if (scoreDifferenceCanvas) {
+                        if (charts.scoreDifference instanceof Chart) {
+                            charts.scoreDifference.destroy();
+                        }
+                        charts.scoreDifference = new Chart(scoreDifferenceCanvas, {
+                            type: 'bar',
+                            data: {
+                                labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
+                                datasets: [{
+                                    label: '202班相比201班的分差',
+                                    data: [
+                                        87.13 - 85.3,
+                                        84.13 - 75.81,
+                                        88.05 - 85.62,
+                                        69.31 - 59.22,
+                                        69.13 - 65.46,
+                                        79.62 - 79.14,
+                                        75.67 - 69.97,
+                                        62.21 - 54.81,
+                                        25.58 - 23.17
+                                    ],
+                                    backgroundColor: '#F59E0B',
+                                    borderColor: '#D97706',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                ...commonOptions,
+                                indexAxis: 'y'
+                            }
+                        });
+                    }
+
+                    // 平均分图表
+                    const averageScoreCanvas = document.getElementById('averageScoreChart');
+                    if (averageScoreCanvas) {
+                        if (charts.averageScore instanceof Chart) {
+                            charts.averageScore.destroy();
+                        }
+                        charts.averageScore = new Chart(averageScoreCanvas, {
+                            type: 'radar',
+                            data: {
+                                labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
+                                datasets: [{
+                                    label: '201班',
+                                    data: [85.3, 75.81, 85.62, 59.22, 65.46, 79.14, 69.97, 54.81, 23.17],
+                                    backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                                    borderColor: '#4F46E5',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: '#4F46E5'
+                                }, {
+                                    label: '202班',
+                                    data: [87.13, 84.13, 88.05, 69.31, 69.13, 79.62, 75.67, 62.21, 25.58],
+                                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                                    borderColor: '#10B981',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: '#10B981'
+                                }]
+                            },
+                            options: {
+                                ...commonOptions,
+                                scales: {
+                                    r: {
+                                        beginAtZero: true,
+                                        max: 100,
+                                        ticks: {
+                                            color: textColor,
+                                            backdropColor: isDark ? '#111827' : '#F9FAFB'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    // 及格率图表
+                    const passRateCanvas = document.getElementById('passRateChart');
+                    if (passRateCanvas) {
+                        if (charts.passRate instanceof Chart) {
+                            charts.passRate.destroy();
+                        }
+                        charts.passRate = new Chart(passRateCanvas, {
+                            type: 'bar',
+                            data: {
+                                labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
+                                datasets: [{
+                                    label: '201班',
+                                    data: [89.19, 64.86, 78.38, 45.95, 78.38, 91.89, 81.08, 48.65, 81.08],
+                                    backgroundColor: 'rgba(79, 70, 229, 0.7)',
+                                    borderColor: '#4F46E5',
+                                    borderWidth: 1
+                                }, {
+                                    label: '202班',
+                                    data: [94.87, 74.36, 76.92, 79.49, 74.36, 92.31, 87.18, 58.97, 89.74],
+                                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                                    borderColor: '#10B981',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                ...commonOptions,
+                                scales: {
+                                    ...commonOptions.scales,
+                                    y: {
+                                        ...commonOptions.scales.y,
+                                        max: 100,
+                                        ticks: {
+                                            ...commonOptions.scales.y.ticks,
+                                            callback: value => `${value}%`
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    // 优秀率图表
+                    const excellentRateCanvas = document.getElementById('excellentRateChart');
+                    if (excellentRateCanvas) {
+                        if (charts.excellentRate instanceof Chart) {
+                            charts.excellentRate.destroy();
+                        }
+                        charts.excellentRate = new Chart(excellentRateCanvas, {
+                            type: 'bar',
+                            data: {
+                                labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
+                                datasets: [{
+                                    label: '201班',
+                                    data: [27.03, 27.03, 40.54, 13.51, 8.11, 56.76, 32.43, 0, 59.46],
+                                    backgroundColor: 'rgba(79, 70, 229, 0.7)',
+                                    borderColor: '#4F46E5',
+                                    borderWidth: 1
+                                }, {
+                                    label: '202班',
+                                    data: [25.64, 41.03, 46.15, 25.64, 30.77, 51.28, 48.72, 7.69, 76.92],
+                                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                                    borderColor: '#10B981',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                ...commonOptions,
+                                scales: {
+                                    ...commonOptions.scales,
+                                    y: {
+                                        ...commonOptions.scales.y,
+                                        max: 100,
+                                        ticks: {
+                                            ...commonOptions.scales.y.ticks,
+                                            callback: value => `${value}%`
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    // 特优率图表
+                    const specialRateCanvas = document.getElementById('specialRateChart');
+                    if (specialRateCanvas) {
+                        if (charts.specialRate instanceof Chart) {
+                            charts.specialRate.destroy();
+                        }
+                        charts.specialRate = new Chart(specialRateCanvas, {
+                            type: 'bar',
+                            data: {
+                                labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
+                                datasets: [{
+                                    label: '201班',
+                                    data: [0, 5.41, 13.51, 0, 0, 21.62, 2.7, 0, 51.35],
+                                    backgroundColor: 'rgba(79, 70, 229, 0.7)',
+                                    borderColor: '#4F46E5',
+                                    borderWidth: 1
+                                }, {
+                                    label: '202班',
+                                    data: [0, 25.64, 7.69, 5.13, 2.56, 25.64, 7.69, 0, 56.41],
+                                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                                    borderColor: '#10B981',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                ...commonOptions,
+                                scales: {
+                                    ...commonOptions.scales,
+                                    y: {
+                                        ...commonOptions.scales.y,
+                                        max: 100,
+                                        ticks: {
+                                            ...commonOptions.scales.y.ticks,
+                                            callback: value => `${value}%`
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                } catch (error) {
+                    console.error('渲染图表时出错:', error);
+                }
+            }
+
+            // 初始化图表
+            setTimeout(renderCharts, 100);
+
+            // 深色模式切换
+            const themeSwitch = document.getElementById('themeSwitch');
+            if (themeSwitch) {
+                themeSwitch.addEventListener('click', function() {
+                    const isDarkNow = document.body.classList.toggle('dark');
+                    localStorage.setItem('darkMode', isDarkNow);
+                    renderCharts();
+                });
+            }
+
+            // 标签切换
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-tab');
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                    this.classList.add('active');
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) {
+                        targetContent.classList.remove('hidden');
+                        setTimeout(renderCharts, 100);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
