@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>八年级第一次段考成绩分析</title>
+    <title>八年级第二次段考成绩分析</title>
     <link href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -209,7 +209,7 @@
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-2">
                 <i class="fas fa-chart-bar text-2xl" style="color: var(--primary-color);"></i>
-                <h1 class="text-xl font-bold">八年级第一次段考成绩分析</h1>
+                <h1 class="text-xl font-bold">八年级第二次段考成绩分析</h1>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="theme-switch" id="themeSwitch"></div>
@@ -251,14 +251,14 @@
                     <div class="mt-4 pt-4 border-t" style="border-color: var(--border-color);">
                         <div class="flex justify-between items-center mb-2">
                             <span class="font-medium">201班总分平均分</span>
-                            <span class="font-bold">598.5分</span>
+                            <span class="font-bold">574.89分</span>
                         </div>
                         <div class="progress-container mb-4">
                             <div class="progress-bar" style="width: 74.8%; background-color: #4F46E5;"></div>
                         </div>
                         <div class="flex justify-between items-center mb-2">
                             <span class="font-medium">202班总分平均分</span>
-                            <span class="font-bold">640.83分</span>
+                            <span class="font-bold">617.47分</span>
                         </div>
                         <div class="progress-container">
                             <div class="progress-bar" style="width: 80.1%; background-color: #10B981;"></div>
@@ -272,13 +272,13 @@
                         班级差距分析
                     </h3>
                     <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                        202班在总分上高出201班42.33分，具体学科差距如下
+                        202班在总分上高出201班42.58分，具体学科差距如下
                     </div>
                     <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
                         <canvas id="scoreDifferenceChart"></canvas>
                     </div>
                     <div class="mt-4 pt-4 border-t text-center" style="border-color: var(--border-color);">
-                        <p class="text-sm"><span class="font-semibold">结论：</span>202班在各科目上普遍优于201班，尤其在道法、地理、数学和生物学科上差距显著</p>
+                        <p class="text-sm"><span class="font-semibold">结论：</span>202班在各科目上普遍优于201班，尤其在历史、地理、数学和生物学科上差距显著</p>
                     </div>
                 </div>
             </div>
@@ -331,27 +331,27 @@
                                 <tbody>
                                     <tr>
                                         <td class="font-medium">201</td>
-                                        <td>85.3</td>
-                                        <td>75.81</td>
-                                        <td>85.62</td>
-                                        <td>59.22</td>
-                                        <td>65.46</td>
-                                        <td>79.14</td>
-                                        <td>69.97</td>
-                                        <td>54.81</td>
-                                        <td>23.17</td>
+                                        <td>82.05</td>
+                                        <td>83.13</td>
+                                        <td>84.53</td>
+                                        <td>62.76</td>
+                                        <td>64.61</td>
+                                        <td>61.95</td>
+                                        <td>64.18</td>
+                                        <td>54.47</td>
+                                        <td>17.21</td>
                                     </tr>
                                     <tr>
                                         <td class="font-medium">202</td>
-                                        <td>87.13</td>
-                                        <td>84.13</td>
-                                        <td>88.05</td>
+                                        <td>84.62</td>
+                                        <td>90.12</td>
+                                        <td>86.05</td>
                                         <td>69.31</td>
-                                        <td>69.13</td>
-                                        <td>79.62</td>
-                                        <td>75.67</td>
-                                        <td>62.21</td>
-                                        <td>25.58</td>
+                                        <td>65.8</td>
+                                        <td>71.1</td>
+                                        <td>67.28</td>
+                                        <td>61.1</td>
+                                        <td>21.68</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -390,27 +390,27 @@
                                 <tbody>
                                     <tr>
                                         <td class="font-medium">201</td>
-                                        <td>89.19%</td>
-                                        <td>64.86%</td>
-                                        <td>78.38%</td>
-                                        <td>45.95%</td>
-                                        <td>78.38%</td>
-                                        <td>91.89%</td>
-                                        <td>81.08%</td>
-                                        <td>48.65%</td>
-                                        <td>81.08%</td>
+                                        <td>86.84%</td>
+                                        <td>76.32%</td>
+                                        <td>71.05%</td>
+                                        <td>68.42%</td>
+                                        <td>68.42%</td>
+                                        <td>63.16%</td>
+                                        <td>63.16%</td>
+                                        <td>42.11%</td>
+                                        <td>42.11%</td>
                                     </tr>
                                     <tr>
                                         <td class="font-medium">202</td>
                                         <td>94.87%</td>
+                                        <td>82.05%</td>
                                         <td>74.36%</td>
                                         <td>76.92%</td>
-                                        <td>79.49%</td>
-                                        <td>74.36%</td>
-                                        <td>92.31%</td>
-                                        <td>87.18%</td>
-                                        <td>58.97%</td>
-                                        <td>89.74%</td>
+                                        <td>74.36</td>
+                                        <td>71.79%</td>
+                                        <td>76.92%</td>
+                                        <td>53.85%</td>
+                                        <td>66.67%</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -449,27 +449,27 @@
                                 <tbody>
                                     <tr>
                                         <td class="font-medium">201</td>
-                                        <td>27.03%</td>
-                                        <td>27.03%</td>
-                                        <td>40.54%</td>
-                                        <td>13.51%</td>
-                                        <td>8.11%</td>
-                                        <td>56.76%</td>
-                                        <td>32.43%</td>
-                                        <td>0.00%</td>
-                                        <td>59.46%</td>
+                                        <td>15.79%</td>
+                                        <td>31.58%</td>
+                                        <td>28.95%</td>
+                                        <td>13.16%</td>
+                                        <td>2.63%</td>
+                                        <td>18.42%</td>
+                                        <td>5.26%</td>
+                                        <td>2.63%</td>
+                                        <td>15.79%</td>
                                     </tr>
                                     <tr>
                                         <td class="font-medium">202</td>
+                                        <td>17.95</td>
+                                        <td>53.85%</td>
+                                        <td>35.90%</td>
+                                        <td>17.95%</td>
+                                        <td>35.90%</td>
                                         <td>25.64%</td>
-                                        <td>41.03%</td>
+                                        <td>25.64%</td>
+                                        <td>15.38%</td>
                                         <td>46.15%</td>
-                                        <td>25.64%</td>
-                                        <td>30.77%</td>
-                                        <td>51.28%</td>
-                                        <td>48.72%</td>
-                                        <td>7.69%</td>
-                                        <td>76.92%</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -509,26 +509,26 @@
                                     <tr>
                                         <td class="font-medium">201</td>
                                         <td>0.00%</td>
-                                        <td>5.41%</td>
-                                        <td>13.51%</td>
+                                        <td>10.53%</td>
+                                        <td>10.53%</td>
+                                        <td>2.63%</td>
+                                        <td>0.00%</td>
+                                        <td>5.26%</td>
                                         <td>0.00%</td>
                                         <td>0.00%</td>
-                                        <td>21.62%</td>
-                                        <td>2.70%</td>
-                                        <td>0.00%</td>
-                                        <td>51.35%</td>
+                                        <td>13.16%</td>
                                     </tr>
                                     <tr>
                                         <td class="font-medium">202</td>
                                         <td>0.00%</td>
-                                        <td>25.64%</td>
-                                        <td>7.69%</td>
+                                        <td>17.95%</td>
                                         <td>5.13%</td>
-                                        <td>2.56%</td>
-                                        <td>25.64%</td>
+                                        <td>5.13%</td>
                                         <td>7.69%</td>
-                                        <td>0.00%</td>
-                                        <td>56.41%</td>
+                                        <td>7.69%</td>
+                                        <td>12.82%</td>
+                                        <td>2.56%</td>
+                                        <td>28.21%</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -552,36 +552,37 @@
                 </div>
                 <div class="mermaid-container" style="overflow: auto; max-width: 100%;">
                     <div class="mermaid">
-flowchart TB
-    classDef class201 fill:#4F46E5,color:white,stroke:#4F46E5,stroke-width:2px
-    classDef class202 fill:#10B981,color:white,stroke:#10B981,stroke-width:2px
-    classDef highlight fill:#F59E0B,color:white,stroke:#F59E0B,stroke-width:2px
-    
-    Start["班级成绩分析"] --> Class201["201班<br>总分: 598.5"]:::class201
-    Start --> Class202["202班<br>总分: 640.83"]:::class202
-    
-    Class201 --> Chinese1["语文: 85.3<br>及格率: 89.19%<br>优秀率: 27.03%"]
-    Class201 --> Math1["数学: 75.81<br>及格率: 64.86%<br>优秀率: 27.03%"]
-    Class201 --> English1["英语: 85.62<br>及格率: 78.38%<br>优秀率: 40.54%"]
-    Class201 --> Physics1["物理: 79.14<br>及格率: 91.89%<br>优秀率: 56.76%"]
-    Class201 --> Problem1["薄弱学科"]:::highlight
-    
-    Problem1 --> Dao1["道法: 59.22<br>及格率: 45.95%"]
-    Problem1 --> Geo1["地理: 54.81<br>及格率: 48.65%"]
-    
-    Class202 --> Chinese2["语文: 87.13<br>及格率: 94.87%<br>优秀率: 25.64%"]
-    Class202 --> Math2["数学: 84.13<br>及格率: 74.36%<br>优秀率: 41.03%"]
-    Class202 --> English2["英语: 88.05<br>及格率: 76.92%<br>优秀率: 46.15%"]
-    Class202 --> Physics2["物理: 79.62<br>及格率: 92.31%<br>优秀率: 51.28%"]
-    Class202 --> Strength["优势科目"]:::highlight
-    
-    Strength --> Sport["体育: 比201班<br>高17.44%优秀率"]
-    Strength --> Math_adv["数学: 比201班<br>高20.23%特优率"]
-    
-    Chinese1 -.- Chinese2
-    Math1 -.- Math2
-    English1 -.- English2
-    Physics1 -.- Physics2
+                        flowchart TB
+                        classDef class201 fill:#4F46E5,color:white,stroke:#4F46E5,stroke-width:2px
+                        classDef class202 fill:#10B981,color:white,stroke:#10B981,stroke-width:2px
+                        classDef highlight fill:#F59E0B,color:white,stroke:#F59E0B,stroke-width:2px
+                        
+                        Start["班级成绩分析"] --> Class201["201班<br>总分: 574.89"]:::class201
+                        Start --> Class202["202班<br>总分: 617.47"]:::class202
+                        
+                        Class201 --> Chinese1["语文: 82.05<br>及格率: 86.84%<br>优秀率: 15.79%"]
+                        Class201 --> Math1["数学: 83.13<br>及格率: 76.32%<br>优秀率: 31.58%"]
+                        Class201 --> English1["英语: 84.53<br>及格率: 71.05%<br>优秀率: 28.95%"]
+                        Class201 --> Physics1["物理: 61.95<br>及格率: 63.16%<br>优秀率: 18.42%"]
+                        Class201 --> Problem1["薄弱学科"]:::highlight
+                        
+                        Problem1 --> Dao1["道法: 62.76<br>及格率: 68.42%"]
+                        Problem1 --> Geo1["地理: 54.47<br>及格率: 42.11%"]
+                        Problem1 --> Sport1["体育: 17.21<br>及格率: 42.11%"]
+                        
+                        Class202 --> Chinese2["语文: 84.62<br>及格率: 94.87%<br>优秀率: 17.95%"]
+                        Class202 --> Math2["数学: 90.12<br>及格率: 82.05%<br>优秀率: 53.85%"]
+                        Class202 --> English2["英语: 86.05<br>及格率: 74.36%<br>优秀率: 35.90%"]
+                        Class202 --> Physics2["物理: 67.28<br>及格率: 71.79%<br>优秀率: 25.64%"]
+                        Class202 --> Strength["优势科目"]:::highlight
+                        
+                        Strength --> Sport2["体育: 21.68<br>比201班高24.56%及格率<br>高28.36%优秀率"]
+                        Strength --> Math_adv["数学: 比201班高7.33%平均分<br>高22.27%优秀率<br>高7.42%特优率"]
+                        
+                        Chinese1 -.- Chinese2
+                        Math1 -.- Math2
+                        English1 -.- English2
+                        Physics1 -.- Physics2
     </div>
                 </div>
             </div>
@@ -600,32 +601,40 @@ flowchart TB
                         <li class="flex">
                             <i class="fas fa-circle-exclamation text-red-500 mt-1 mr-3"></i>
                             <div>
-                                <p class="font-medium">薄弱学科明显</p>
-                                <p class="text-sm opacity-80">道法、地理两科平均分低于60分，及格率不足50%，需重点关注</p>
+                                <p class="font-medium">总体成绩偏低</p>
+                                <p class="text-sm opacity-80">总分平均分574.89，比202班低42.28分，需重点提升</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-circle-exclamation text-red-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">多科及格率偏低</p>
+                                <p class="text-sm opacity-80">地理及格率仅42.11%，体育及格率42.11%，历史及格率68.42%，需重点关注</p>
                             </div>
                         </li>
                         <li class="flex">
                             <i class="fas fa-circle-check text-green-500 mt-1 mr-3"></i>
                             <div>
-                                <p class="font-medium">物理和体育表现突出</p>
-                                <p class="text-sm opacity-80">物理优秀率56.76%，体育特优率51.35%，是班级优势学科</p>
+                                <p class="font-medium">语文表现较佳</p>
+                                <p class="text-sm opacity-80">语文及格率86.84%，优秀率15.79%，表现相对稳定</p>
                             </div>
                         </li>
                         <li class="flex">
                             <i class="fas fa-arrows-left-right text-blue-500 mt-1 mr-3"></i>
                             <div>
-                                <p class="font-medium">数学两极分化</p>
-                                <p class="text-sm opacity-80">及格率仅64.86%，但优秀率达27.03%，说明存在两极分化现象</p>
+                                <p class="font-medium">数学特长生比例较高</p>
+                                <p class="text-sm opacity-80">数学优秀率31.58%，特优率10.53%，表明有部分学生具有较强数学能力</p>
                             </div>
                         </li>
                     </ul>
                     <div class="mt-6 pt-4 border-t" style="border-color: var(--border-color);">
                         <h4 class="font-medium mb-2">建议措施：</h4>
                         <ol class="list-decimal ml-5 space-y-2 text-sm">
-                            <li>组织道法、地理学科专项辅导，制定针对性的补救方案</li>
-                            <li>利用物理和体育学科的优势，提高学生的学习积极性</li>
-                            <li>数学学科关注学困生，提高及格率</li>
-                            <li>加强历史学科教学，目前优秀率偏低（8.11%）</li>
+                            <li>针对地理、体育学科组织专项辅导，提高学科基础知识掌握程度</li>
+                            <li>加强历史、道法学科薄弱环节教学，提高及格率</li>
+                            <li>利用语文和数学优势，增强学生自信心，带动其他学科提升</li>
+                            <li>针对生物学科优秀率偏低(5.26%)情况，调整教学策略</li>
+                            <li>实施分层教学，关注学习困难学生，同时保持对特优生的培养</li>
                         </ol>
                     </div>
                 </div>
@@ -637,31 +646,39 @@ flowchart TB
                             <i class="fas fa-trophy text-yellow-500 mt-1 mr-3"></i>
                             <div>
                                 <p class="font-medium">整体表现优秀</p>
-                                <p class="text-sm opacity-80">总分平均分640.83，各科表现均衡，优于201班</p>
+                                <p class="text-sm opacity-80">总分平均分617.17，各科平均分普遍较高，整体实力强</p>
                             </div>
                         </li>
                         <li class="flex">
                             <i class="fas fa-star text-purple-500 mt-1 mr-3"></i>
                             <div>
                                 <p class="font-medium">数学特优突出</p>
-                                <p class="text-sm opacity-80">数学特优率25.64%，远高于201班的5.41%</p>
+                                <p class="text-sm opacity-80">数学优秀率高达53.85%，特优率17.95%，是明显的优势学科</p>
                             </div>
                         </li>
                         <li class="flex">
                             <i class="fas fa-arrow-trend-up text-green-500 mt-1 mr-3"></i>
                             <div>
-                                <p class="font-medium">道法成绩显著提升</p>
-                                <p class="text-sm opacity-80">道法及格率79.49%，比201班高33.54个百分点</p>
+                                <p class="font-medium">体育成绩显著领先</p>
+                                <p class="text-sm opacity-80">体育优秀率46.15%，特优率28.21%，远超201班</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-circle-exclamation text-orange-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="font-medium">语文特优存在不足</p>
+                                <p class="text-sm opacity-80">语文特优率为0%，与其他学科优异表现形成对比，需关注</p>
                             </div>
                         </li>
                     </ul>
                     <div class="mt-6 pt-4 border-t" style="border-color: var(--border-color);">
                         <h4 class="font-medium mb-2">建议措施：</h4>
                         <ol class="list-decimal ml-5 space-y-2 text-sm">
-                            <li>保持现有的教学质量，进一步提升地理学科的成绩表现</li>
-                            <li>分享数学和道法学科的教学经验，帮助其他班级改进</li>
-                            <li>继续发挥体育学科的优势，提升学生的综合素质</li>
-                            <li>关注语文特优率为0的问题，探索提高学生高分段能力的方法</li>
+                            <li>保持现有良好教学态势，进一步提升整体水平</li>
+                            <li>针对语文学科，增强高分段能力培养，提高特优率</li>
+                            <li>继续发挥数学和体育学科优势，探索可推广的教学经验</li>
+                            <li>关注地理学科优秀率偏低(15.38%)的情况，加强教学</li>
+                            <li>分享数学、体育学科的成功教学方法，带动其他学科提高</li>
                         </ol>
                     </div>
                 </div>
@@ -693,7 +710,7 @@ flowchart TB
                 </div>
             </div>
             <div class="mt-8 pt-6 border-t text-center text-sm opacity-70" style="border-color: var(--border-color);">
-                <p>&copy; 2025 班级成绩数据可视化平台(试验版) | 数据更新时间: 2025-04-01</p>
+                <p>&copy; 2025 班级成绩数据可视化平台(试验版) | 数据更新时间: 2025-05-21</p>
             </div>
         </div>
     </footer>
@@ -811,15 +828,15 @@ flowchart TB
                                 datasets: [{
                                     label: '202班相比201班的分差',
                                     data: [
-                                        87.13 - 85.3,
-                                        84.13 - 75.81,
-                                        88.05 - 85.62,
-                                        69.31 - 59.22,
-                                        69.13 - 65.46,
-                                        79.62 - 79.14,
-                                        75.67 - 69.97,
-                                        62.21 - 54.81,
-                                        25.58 - 23.17
+                                    84.62 - 82.05,
+                                    90.12 - 83.13,
+                                    86.05 - 84.53,
+                                    65.8 - 62.76,
+                                    71.1 - 64.61,
+                                    67.28 - 61.95,
+                                    69.72 - 64.18,
+                                    61.1 - 54.47,
+                                    21.68 - 17.21
                                     ],
                                     backgroundColor: '#F59E0B',
                                     borderColor: '#D97706',
@@ -845,14 +862,14 @@ flowchart TB
                                 labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
                                 datasets: [{
                                     label: '201班',
-                                    data: [85.3, 75.81, 85.62, 59.22, 65.46, 79.14, 69.97, 54.81, 23.17],
+                                    data: [82.05, 83.13, 84.53, 62.76, 64.61, 61.95, 64.18, 54.47, 17.21],
                                     backgroundColor: 'rgba(79, 70, 229, 0.2)',
                                     borderColor: '#4F46E5',
                                     borderWidth: 2,
                                     pointBackgroundColor: '#4F46E5'
                                 }, {
                                     label: '202班',
-                                    data: [87.13, 84.13, 88.05, 69.31, 69.13, 79.62, 75.67, 62.21, 25.58],
+                                    data: [84.62,90.12,86.05,65.8,71.1,67.28,69.72,61.1,21.68],
                                     backgroundColor: 'rgba(16, 185, 129, 0.2)',
                                     borderColor: '#10B981',
                                     borderWidth: 2,
@@ -887,13 +904,13 @@ flowchart TB
                                 labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
                                 datasets: [{
                                     label: '201班',
-                                    data: [89.19, 64.86, 78.38, 45.95, 78.38, 91.89, 81.08, 48.65, 81.08],
+                                    data: [86.84, 76.32, 71.05, 68.42, 68.42, 63.16, 63.16, 42.11, 42.11],
                                     backgroundColor: 'rgba(79, 70, 229, 0.7)',
                                     borderColor: '#4F46E5',
                                     borderWidth: 1
                                 }, {
                                     label: '202班',
-                                    data: [94.87, 74.36, 76.92, 79.49, 74.36, 92.31, 87.18, 58.97, 89.74],
+                                    data: [94.87, 82.05, 74.36, 76.92, 74.36, 71.79, 76.92, 53.85, 66.67],
                                     backgroundColor: 'rgba(16, 185, 129, 0.7)',
                                     borderColor: '#10B981',
                                     borderWidth: 1
@@ -928,13 +945,13 @@ flowchart TB
                                 labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
                                 datasets: [{
                                     label: '201班',
-                                    data: [27.03, 27.03, 40.54, 13.51, 8.11, 56.76, 32.43, 0, 59.46],
+                                    data: [15.79, 31.58, 28.95, 13.16, 2.63, 18.42, 5.26, 2.63, 15.79],
                                     backgroundColor: 'rgba(79, 70, 229, 0.7)',
                                     borderColor: '#4F46E5',
                                     borderWidth: 1
                                 }, {
                                     label: '202班',
-                                    data: [25.64, 41.03, 46.15, 25.64, 30.77, 51.28, 48.72, 7.69, 76.92],
+                                    data: [17.95, 53.85, 35.90, 17.95, 35.90, 25.64, 25.64, 15.38, 46.15],
                                     backgroundColor: 'rgba(16, 185, 129, 0.7)',
                                     borderColor: '#10B981',
                                     borderWidth: 1
@@ -969,13 +986,13 @@ flowchart TB
                                 labels: ['语文', '数学', '英语', '道法', '历史', '物理', '生物', '地理', '体育'],
                                 datasets: [{
                                     label: '201班',
-                                    data: [0, 5.41, 13.51, 0, 0, 21.62, 2.7, 0, 51.35],
+                                    data: [0, 10.53, 10.53, 2.63, 0, 5.26, 0, 0, 13.16],
                                     backgroundColor: 'rgba(79, 70, 229, 0.7)',
                                     borderColor: '#4F46E5',
                                     borderWidth: 1
                                 }, {
                                     label: '202班',
-                                    data: [0, 25.64, 7.69, 5.13, 2.56, 25.64, 7.69, 0, 56.41],
+                                    data: [0, 17.95, 5.13, 5.13, 7.69, 7.69, 12.82, 2.56, 28.21],
                                     backgroundColor: 'rgba(16, 185, 129, 0.7)',
                                     borderColor: '#10B981',
                                     borderWidth: 1
